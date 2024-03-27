@@ -1,0 +1,21 @@
+const fs = require('fs');
+const path = require('path');
+const directoryPath = process.argv[2];
+const fileExtension = process.argv[3];
+
+fs.readdir(directoryPath, (err, files) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+
+    // Filter files by extension
+    const filteredFiles = files.filter(file => {
+        return path.extname(file) === `.${fileExtension}`;
+    });
+
+
+    filteredFiles.forEach(file => {
+        console.log(file);
+    });
+});
