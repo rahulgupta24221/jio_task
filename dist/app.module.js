@@ -14,6 +14,7 @@ const admin_module_1 = require("./admin/admin.module");
 const mongoose_1 = require("@nestjs/mongoose");
 const config_1 = require("@nestjs/config");
 const auth_module_1 = require("./auth/auth.module");
+const app_controller_1 = require("./app.controller");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -22,7 +23,7 @@ exports.AppModule = AppModule = __decorate([
         imports: [mongoose_1.MongooseModule.forRoot('mongodb://localhost/mydb'),
             config_1.ConfigModule.forRoot(),
             user_module_1.UserModule, city_module_1.CityModule, admin_module_1.AdminModule, auth_module_1.AuthModule],
-        controllers: [],
+        controllers: [app_controller_1.AppController],
         providers: [],
     })
 ], AppModule);

@@ -1,4 +1,4 @@
 export declare class Admin {
-    name: string;
+    username: string;
     password: string;
 }

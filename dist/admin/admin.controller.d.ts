@@ -4,7 +4,6 @@ import { City } from 'src/city/city.model';
 export declare class AdminController {
     private readonly adminservice;
     constructor(adminservice: AdminService);
-    getdata(): string;
     findAll(): Promise<City[]>;
     create(cityDto: CityDto): Promise<City>;
 }

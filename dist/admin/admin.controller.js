@@ -16,14 +16,11 @@ exports.AdminController = void 0;
 const common_1 = require("@nestjs/common");
 const admin_service_1 = require("./admin.service");
 const city_dto_1 = require("../city/city.dto");
-const passport_1 = require("@nestjs/passport");
 const swagger_1 = require("@nestjs/swagger");
+const passport_1 = require("@nestjs/passport");
 let AdminController = class AdminController {
     constructor(adminservice) {
         this.adminservice = adminservice;
-    }
-    getdata() {
-        return "this is private data of admin";
     }
     async findAll() {
         return this.adminservice.findAll();
@@ -35,20 +32,44 @@ let AdminController = class AdminController {
 };
 exports.AdminController = AdminController;
 __decorate([
-    (0, common_1.Get)(),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('local')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], AdminController.prototype, "getdata", null);
-__decorate([
     (0, common_1.Get)("/cities"),
+    (0, swagger_1.ApiOperation)({ summary: 'Get all data from this api' }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'All data list'
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 404,
+        description: 'Not found'
+    }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Post)("/cities"),
+    (0, swagger_1.ApiOperation)({ summary: 'add a city' }),
+    (0, swagger_1.ApiBody)({
+        schema: {
+            type: 'object',
+            properties: {
+                name: {
+                    type: 'string',
+                    example: 'nagpur',
+                    description: 'this is the city'
+                }
+            }
+        }
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'All data list'
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 404,
+        description: 'Not found'
+    }),
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('basic')),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [city_dto_1.CityDto]),

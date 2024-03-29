@@ -6,17 +6,17 @@ export class AuthService {
 
     public Admins: Admin[] = [
         {
-            name: "admin1",
+            username: "admin1",
             password: "user1"
         },
         {
-            name: "admin2",
+            username: "admin2",
             password: "user2"
         }
     ];
     // it is object method
     getadminbyname(adminname: string): Admin {
-        return this.Admins.find((admin: Admin) => admin.name == adminname);
+        return this.Admins.find((admin: Admin) => admin.username == adminname);
 
     }
 }

@@ -25,12 +25,9 @@
 import { Model } from 'mongoose';
 import { CityDto } from 'src/city/city.dto';
 import { City } from 'src/city/city.model';
-import { Admin } from './admin.entity';
 export declare class AdminService {
     private readonly cityModel;
     constructor(cityModel: Model<City>);
     create(cityDto: CityDto): Promise<City>;
     findAll(): Promise<City[]>;
-    Admins: Admin[];
-    getadminbyname(adminname: string): Admin;
 }
