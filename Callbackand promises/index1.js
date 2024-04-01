@@ -1,41 +1,37 @@
-const fs = require('fs');
 
+const fs = require('fs').promises; //using promises
 
-function readAndSortJSON(filePath, name) {
-    return new Promise((resolve, reject) => {
-    fs.readFile(filePath, 'utf8', (err, data) => {
-        if (err) {
-                reject(err);
-                return;
-            }
-        try {
-                const jsonData = JSON.parse(data);
-                if (!jsonData || !Array.isArray(jsonData)) {
-                    reject(new Error('Invalid JSON data'));
-                    return;
-                }
+async function readAndSortJSONFile(file_Path, sortByjsondata) {
 
-                if (name) {
-                    jsonData.sort((a, b) => {
-                        if (a[name] < b[name]) return -1;
-                        if (a[name] > b[name]) return 1;
-                        return 0;
-                    });
-                }
+    try {
+        // Read JSON file asynchronously
+        const data = await fs.readFile(file_Path, 'utf-8');
 
-                resolve(jsonData);
-        } catch (parseError) {
-                reject(parseError);
-            }
+        const jsonData = JSON.parse(data);
+
+        // Sort the array based on a specific property
+        jsonData.sort((a, b) => {
+            // Assuming sortByProperty exists in each object
+            return a[sortByjsondata] - b[sortByjsondata];
         });
-    });
+
+        return jsonData;
+    } catch (error) {
+        console.error('Error reading or sorting JSON file:', error);
+        throw error;
+    }
 }
 
+const file_Path = '/home/rahul/jio_chargeit2/github/jio_task/Callbackand promises/data.json';
+ const sortByjsondata = 'name'; 
 
-readAndSortJSON('/home/rahul/jio_chargeit2/github/jio_task/CPA/data.json', 'name')
-    .then(sortedData => {
-        console.log(sortedData);
+readAndSortJSONFile(file_Path, sortByjsondata)
+    .then((sortedData) => {
+        console.log('Sorted data:', sortedData);
     })
-    .catch(error => {
+    .catch((error) => {
         console.error('Error:', error);
     });
+
+
+
