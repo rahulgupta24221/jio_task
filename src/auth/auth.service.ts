@@ -4,19 +4,15 @@ import { Admin } from 'src/admin/admin.entity';
 @Injectable()
 export class AuthService {
 
-    public Admins: Admin[] = [
-        {
-            username: "admin1",
-            password: "user1"
-        },
-        {
-            username: "admin2",
-            password: "user2"
-        }
-    ];
-    // it is object method
-    getadminbyname(adminname: string): Admin {
-        return this.Admins.find((admin: Admin) => admin.username == adminname);
+    async getadminbyname(username: string, password: string): Promise<boolean> {
+        const adminUsername = process.env.ADMIN_USERNAME;
+        const adminPassword = process.env.ADMIN_PASSWORD;
+        console.log(username, password, adminPassword, adminUsername)
 
+        if (username === adminUsername && password === adminPassword) {
+            return true;
+        } else {
+            throw new Error('Invalid credentials');
+        }
     }
 }

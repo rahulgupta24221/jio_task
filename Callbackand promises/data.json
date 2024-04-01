@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "name": "raju",
+            "age": 30,
+            "city": "Hydearbad"
+        },
+        {
+            "name": "nitin",
+            "age": 25,
+            "city": "mumbai"
+        },
+        {
+            "name": "hupender",
+            "age": 34,
+            "city": "nagpur"
+        }
+    ]
+}

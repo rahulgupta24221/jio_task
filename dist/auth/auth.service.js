@@ -9,20 +9,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 let AuthService = class AuthService {
-    constructor() {
-        this.Admins = [
-            {
-                username: "admin1",
-                password: "user1"
-            },
-            {
-                username: "admin2",
-                password: "user2"
-            }
-        ];
-    }
-    getadminbyname(adminname) {
-        return this.Admins.find((admin) => admin.username == adminname);
+    async getadminbyname(username, password) {
+        const adminUsername = process.env.ADMIN_USERNAME;
+        const adminPassword = process.env.ADMIN_PASSWORD;
+        console.log(username, password, adminPassword, adminUsername);
+        if (username === adminUsername && password === adminPassword) {
+            return true;
+        }
+        else {
+            throw new Error('Invalid credentials');
+        }
     }
 };
 exports.AuthService = AuthService;

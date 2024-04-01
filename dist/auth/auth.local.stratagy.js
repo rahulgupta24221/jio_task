@@ -20,12 +20,13 @@ let passportLocalStrategy = class passportLocalStrategy extends (0, passport_1.P
         this.authService = authService;
     }
     async validate(username, password) {
-        const user = await this.authService.getadminbyname(username);
-        if (user == undefined)
+        console.log("dfjuoip[igfhioukgio;ikgoikguiougiu");
+        console.log(username, password);
+        const valid = await this.authService.getadminbyname(username, password);
+        if (!valid) {
             throw new common_1.UnauthorizedException();
-        if (user.password == password) {
-            return user;
         }
+        return { username };
     }
 };
 exports.passportLocalStrategy = passportLocalStrategy;

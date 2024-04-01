@@ -47,6 +47,8 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "findAll", null);
 __decorate([
+    (0, swagger_1.ApiBasicAuth)(),
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('local')),
     (0, common_1.Post)("/cities"),
     (0, swagger_1.ApiOperation)({ summary: 'add a city' }),
     (0, swagger_1.ApiBody)({
@@ -69,7 +71,6 @@ __decorate([
         status: 404,
         description: 'Not found'
     }),
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('basic')),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [city_dto_1.CityDto]),

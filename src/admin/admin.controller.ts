@@ -3,7 +3,7 @@ import { AdminService } from './admin.service';
 import { CityDto } from '../city/city.dto';
 import { City } from 'src/city/city.model';
 //import { AuthGuard } from '@nestjs/passport';
-import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBasicAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('admin')
@@ -26,8 +26,10 @@ constructor(private readonly adminservice:AdminService) {}
     async findAll(): Promise<City[]> {
         return this.adminservice.findAll();
     }
-
+    @ApiBasicAuth()
+    @UseGuards(AuthGuard('local'))
     @Post("/cities")
+    
     @ApiOperation({summary:'add a city'})
     @ApiBody({
         schema: {
@@ -50,7 +52,6 @@ constructor(private readonly adminservice:AdminService) {}
         status: 404,
         description: 'Not found'
     }) 
-    @UseGuards(AuthGuard('basic'))
     async create(@Body() cityDto: CityDto) {
         const val = await this.adminservice.create(cityDto);
         return val;
