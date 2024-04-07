@@ -10,11 +10,11 @@ export class AdminService {
     constructor(@InjectModel(City.name) private readonly cityModel: Model<City>) { }
 
     async create(cityDto: CityDto): Promise<City> {
-        const city = await this.cityModel.create(cityDto);
+        const city = await this.cityModel.create(cityDto);// create a city in the databse
         return city;
     }
 
     async findAll(): Promise<City[]> {
-        return this.cityModel.find().exec();
+        return this.cityModel.find().exec();// it will show all city in the databse
     }
 }

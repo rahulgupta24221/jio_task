@@ -20,7 +20,7 @@ let AppModule = class AppModule {
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forRoot('mongodb://localhost/mydb'),
+        imports: [mongoose_1.MongooseModule.forRoot('mongodb+srv://rajmani26022001:eEXRtctGxUvW0B0B@rahul.mankzhe.mongodb.net/mydb'),
             config_1.ConfigModule.forRoot(),
             user_module_1.UserModule, city_module_1.CityModule, admin_module_1.AdminModule, auth_module_1.AuthModule],
         controllers: [app_controller_1.AppController],

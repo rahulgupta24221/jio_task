@@ -22,11 +22,11 @@ let passportLocalStrategy = class passportLocalStrategy extends (0, passport_1.P
     async validate(username, password) {
         console.log("dfjuoip[igfhioukgio;ikgoikguiougiu");
         console.log(username, password);
-        const valid = await this.authService.getadminbyname(username, password);
-        if (!valid) {
+        const user = await this.authService.getadminbyname(username, password);
+        if (!user) {
             throw new common_1.UnauthorizedException();
         }
-        return { username };
+        return user;
     }
 };
 exports.passportLocalStrategy = passportLocalStrategy;

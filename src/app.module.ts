@@ -12,7 +12,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/mydb'),
+  imports: [MongooseModule.forRoot('mongodb+srv://rajmani26022001:eEXRtctGxUvW0B0B@rahul.mankzhe.mongodb.net/mydb'),
   //MongooseModule.forFeature([{ name: City.name, schema: CitySchema }]),
   ConfigModule.forRoot(),
     UserModule, CityModule, AdminModule, AuthModule],

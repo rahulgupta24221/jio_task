@@ -21,11 +21,11 @@ export class passportLocalStrategy extends PassportStrategy(Strategy) {
         console.log("dfjuoip[igfhioukgio;ikgoikguiougiu")
         console.log(username, password)
 
-        const valid = await this.authService.getadminbyname(username, password);
-        if (!valid) {
+        const user = await this.authService.getadminbyname(username, password);
+        if (!user) {
             throw new UnauthorizedException();
         }
-        return { username };
+        return user;
     }
     
 }

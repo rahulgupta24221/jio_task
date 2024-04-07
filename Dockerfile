@@ -2,7 +2,7 @@
 FROM node:18
 
 # Create app directory
-WORKDIR /home/rahul/github/nest_weather_demo/weather
+WORKDIR /home/rahul/jio_task
 
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
