@@ -15,8 +15,6 @@ export class passportLocalStrategy extends PassportStrategy(Strategy) {
         super();
     }
 
-
-
     async validate(username: string, password: string): Promise<any> {
         console.log("dfjuoip[igfhioukgio;ikgoikguiougiu")
         console.log(username, password)

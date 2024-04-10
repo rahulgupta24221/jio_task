@@ -1,48 +1,44 @@
-import { Body, Controller, Post,Get, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post, Get, UseGuards } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { CityDto } from '../city/city.dto';
 import { City } from 'src/city/city.model';
 //import { AuthGuard } from '@nestjs/passport';
 import { ApiBasicAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { AuthGuard } from '@nestjs/passport';
+// import { AuthGuard } from '@nestjs/passport';
 import { AuthGuardBasic } from 'src/auth/auth.guard';
 
 @Controller('admin')
 @ApiTags("Admin")
 export class AdminController {
-constructor(private readonly adminservice:AdminService) {}
-
-
-
+    constructor(private readonly adminservice: AdminService) { }
     @Get("/cities")
-    @ApiOperation({summary:'Get all data from this api'})
+    @ApiOperation({ summary: 'Get all data from this api' })
     @ApiResponse({
-        status:200,
-        description:'All data list'
+        status: 200,
+        description: 'All data list'
     })
     @ApiResponse({
         status: 404,
         description: 'Not found'
-    }) 
+    })
     async findAll(): Promise<City[]> {
         return this.adminservice.findAll();
     }
 
     @Post("/cities")
     @UseGuards(AuthGuardBasic)
-    
-    @ApiOperation({summary:'add a city'})
+    @ApiOperation({ summary: 'add a city' })
     @ApiBody({
         schema: {
-            type:'object',
+            type: 'object',
             properties: {
-                name:{
-                    type:'string',
-                    example:'nagpur',
-                    description:'this is the city'
+                name: {
+                    type: 'string',
+                    example: 'nagpur',
+                    description: 'this is the city'
                 }
             }
-            
+
         }
     })
     @ApiResponse({
@@ -52,7 +48,7 @@ constructor(private readonly adminservice:AdminService) {}
     @ApiResponse({
         status: 404,
         description: 'Not found'
-    }) 
+    })
     async create(@Body() cityDto: CityDto) {
         const val = await this.adminservice.create(cityDto);
         return val;

@@ -3,6 +3,7 @@ import { AdminController } from './admin.controller';
 import { AdminService } from './admin.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { City, CitySchema } from 'src/city/city.model';
+import { AuthGuardBasic } from 'src/auth/auth.guard';
 //import { AuthModule } from 'src/auth/auth.module';
 
 @Module({

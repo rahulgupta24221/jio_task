@@ -1,0 +1,17 @@
+{
+  "name": "todo-project",
+  "version": "1.0.0",
+  "description": "using nodejs and expressjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "kaliya",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.1"
+  }
+}
