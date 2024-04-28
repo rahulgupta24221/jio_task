@@ -6,7 +6,7 @@ import process from 'process';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+// make a swagger UI
   const config = new DocumentBuilder()
     .setTitle('Weather Api')
     .setDescription('The cities temprature')
@@ -17,9 +17,6 @@ async function bootstrap() {
 
   await app.listen(3001);
   
-  //const configService = app.get(ConfigService);
-  //const port = configService.get<string>('API_KEY');
-  //console.log(port);
 }
 
 

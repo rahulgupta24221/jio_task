@@ -2,7 +2,7 @@
 FROM node:18
 
 # Create app directory
-WORKDIR /home/rahul/jio_task
+WORKDIR "C:\Users\Rahul66.Gupta\OneDrive - Reliance Corporate IT Park Limited\Desktop\backand-develop\jio_task"
 
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./

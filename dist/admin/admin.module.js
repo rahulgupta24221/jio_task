@@ -17,7 +17,7 @@ let AdminModule = class AdminModule {
 exports.AdminModule = AdminModule;
 exports.AdminModule = AdminModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forFeature([{ name: city_model_1.City.name, schema: city_model_1.CitySchema }])],
+        imports: [mongoose_1.MongooseModule.forFeature([{ name: city_model_1.City.name, schema: city_model_1.CitySchema }]),],
         controllers: [admin_controller_1.AdminController],
         providers: [admin_service_1.AdminService],
         exports: [admin_service_1.AdminService]

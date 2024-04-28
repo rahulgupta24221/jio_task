@@ -17,7 +17,6 @@ const common_1 = require("@nestjs/common");
 const admin_service_1 = require("./admin.service");
 const city_dto_1 = require("../city/city.dto");
 const swagger_1 = require("@nestjs/swagger");
-const auth_guard_1 = require("../auth/auth.guard");
 let AdminController = class AdminController {
     constructor(adminservice) {
         this.adminservice = adminservice;
@@ -48,7 +47,6 @@ __decorate([
 ], AdminController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Post)("/cities"),
-    (0, common_1.UseGuards)(auth_guard_1.AuthGuardBasic),
     (0, swagger_1.ApiOperation)({ summary: 'add a city' }),
     (0, swagger_1.ApiBody)({
         schema: {

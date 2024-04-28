@@ -5,7 +5,7 @@ import { City } from 'src/city/city.model';
 //import { AuthGuard } from '@nestjs/passport';
 import { ApiBasicAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 // import { AuthGuard } from '@nestjs/passport';
-import { AuthGuardBasic } from 'src/auth/auth.guard';
+// import { AuthGuardBasic, MyAuthGuard } from 'practice-part/auth/auth.guard';
 
 @Controller('admin')
 @ApiTags("Admin")
@@ -26,7 +26,7 @@ export class AdminController {
     }
 
     @Post("/cities")
-    @UseGuards(AuthGuardBasic)
+   // @UseGuards(MyAuthGuard)
     @ApiOperation({ summary: 'add a city' })
     @ApiBody({
         schema: {

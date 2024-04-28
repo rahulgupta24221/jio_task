@@ -4,10 +4,12 @@ import { Module } from '@nestjs/common';
 import { passportLocalStrategy } from './auth.local.stratagy';
 import { AdminModule } from 'src/admin/admin.module';
 import { AuthService } from './auth.service';
+import { MyAuthGuard } from './auth.guard';
 
 @Module({
   imports:[AdminModule],
   controllers: [],
-  providers: [ passportLocalStrategy, AuthService]
+  providers: [ passportLocalStrategy, AuthService],
+  exports: [MyAuthGuard],
 })
 export class AuthModule {}

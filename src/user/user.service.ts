@@ -11,6 +11,6 @@ export class UserService {
     async findAll(): Promise<City[]> {
         return this.cityModel.find().exec();
     }
-
+/// return city[] = await.cityModel.findAll();
     
 }

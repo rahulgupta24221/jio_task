@@ -1,6 +1,7 @@
 // auth.guard.ts
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthGuardBasic extends AuthGuard('basic') {
@@ -10,4 +11,12 @@ export class AuthGuardBasic extends AuthGuard('basic') {
     }
     return user;
   }
+}
+
+@Injectable()
+export class MyAuthGuard implements CanActivate {
+  canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
+    return true;
+  }
+  
 }
