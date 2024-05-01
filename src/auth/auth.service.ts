@@ -8,11 +8,15 @@ export class AuthService {
         const adminUsername = process.env.ADMIN_USERNAME;
         const adminPassword = process.env.ADMIN_PASSWORD;
        // console.log(username, password, adminPassword, adminUsername)
-
+   try{
         if (username === adminUsername && password === adminPassword) {
             return true;
         } else {
             throw new Error('Invalid credentials');
         }
-    }
+}catch(err)
+{
+    return false;
+}
+}
 }

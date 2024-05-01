@@ -1,54 +1,27 @@
-import { Body, Controller, Post, Get, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post, Get, UseGuards, Req } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { CityDto } from '../city/city.dto';
 import { City } from 'src/city/city.model';
 //import { AuthGuard } from '@nestjs/passport';
 import { ApiBasicAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-// import { AuthGuard } from '@nestjs/passport';
-// import { AuthGuardBasic, MyAuthGuard } from 'practice-part/auth/auth.guard';
+import { MyAuthGuard } from 'src/auth/auth.guard';
 
 @Controller('admin')
 @ApiTags("Admin")
 export class AdminController {
     constructor(private readonly adminservice: AdminService) { }
     @Get("/cities")
-    @ApiOperation({ summary: 'Get all data from this api' })
-    @ApiResponse({
-        status: 200,
-        description: 'All data list'
-    })
-    @ApiResponse({
-        status: 404,
-        description: 'Not found'
-    })
+    @ApiOperation({ summary: 'Get all cities' }) 
+    @ApiResponse({ status: 200, description: 'List of cities retrieved successfully.' }) // Specify the response
     async findAll(): Promise<City[]> {
         return this.adminservice.findAll();
     }
 
     @Post("/cities")
-   // @UseGuards(MyAuthGuard)
-    @ApiOperation({ summary: 'add a city' })
-    @ApiBody({
-        schema: {
-            type: 'object',
-            properties: {
-                name: {
-                    type: 'string',
-                    example: 'nagpur',
-                    description: 'this is the city'
-                }
-            }
-
-        }
-    })
-    @ApiResponse({
-        status: 200,
-        description: 'All data list'
-    })
-    @ApiResponse({
-        status: 404,
-        description: 'Not found'
-    })
+    @UseGuards(MyAuthGuard)
+    @ApiOperation({ summary: 'Create a new city' })
+    @ApiBody({ type: CityDto })
+    @ApiResponse({ status: 201, description: 'The city has been successfully created.' }) // Specify the response
     async create(@Body() cityDto: CityDto) {
         const val = await this.adminservice.create(cityDto);
         return val;
